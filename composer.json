@@ -1,0 +1,23 @@
+{
+  "name": "prayno/moveon-api-rest",
+  "description": "MoveOn Rest API",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Pierre Raynaud",
+      "email": "pierre.raynaud@uca.fr"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PRayno\\MoveOnRestApiBundle\\": "src/Bundle/",
+      "PRayno\\MoveOnRestApi\\": "src/Service/"
+    }
+  },
+
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*",
+    "symfony/http-client": "^6.4"
+  }
+}

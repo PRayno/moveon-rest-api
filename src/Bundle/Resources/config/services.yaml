@@ -1,0 +1,27 @@
+services:
+  moveon_rest_api_base.client:
+    class: Symfony\Contracts\HttpClient\HttpClientInterface
+    public: true
+    autowire: false
+    factory: [ '@http_client', 'withOptions' ]
+    arguments:
+      - { base_uri: "%env(MOVEON_REST_API_BASE_URI)%" }
+
+  PRayno\MoveOnRestApi\MoveOnRestApiClient:
+    bind:
+      $moveonRestApiBaseClient: '@moveon_rest_api_base.client'
+      $tokenProvider: '@PRayno\MoveOnRestApi\Security\ApiTokenProvider'
+
+  PRayno\MoveOnRestApi\MoveOnRestApi:
+    autowire: true
+    autoconfigure: true
+
+
+  PRayno\MoveOnRestApi\Security\ApiTokenProvider:
+    autowire: true
+    autoconfigure: true
+    bind:
+      $moveonRestApiBaseClient: '@moveon_rest_api_base.client'
+      $authEndpoint: "auth/token"
+      $username: "%env(MOVEON_REST_API_USERNAME)%"
+      $password: "%env(MOVEON_REST_API_PASSWORD)%"
