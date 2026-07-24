@@ -36,7 +36,11 @@ class MoveOnRestApi
                 // On exécute une première query
                 $queryBuilder["limit"] = 1;
                 $response = $this->moveOnRestApiClient->request("GET",$query.http_build_query($queryBuilder))->toArray();
-                $totalRows = $response["total"];
+
+                if (isset($response["total"]))
+                    $totalRows = $response["total"];
+                else
+                    $totalRows = (is_array($response["data"])?count($response["data"]):0);
 
                 $totalPages = ceil($totalRows/$this->maxRowsPerQuery);
             }
