@@ -14,9 +14,10 @@ Prior to usage, you must contact your MoveON technical rep to activate the API i
 ### Configuration
 
 This package includes a Symfony bundle already registered to your instance. All you need to do is to add those variables in the .env file of the Symfony app :
->MOVEON_REST_API_BASE_URI="https://mymoveoninstance.restapi.moveonfr.com/api/v1/"
->MOVEON_REST_API_USERNAME="accoun@myemail.com"
->MOVEON_REST_API_PASSWORD="MyComplexPassword"
+> MOVEON_REST_API_BASE_URI="https://mymoveoninstance.restapi.moveonfr.com/api/v1/"
+> MOVEON_REST_API_USERNAME="account_username"
+> MOVEON_REST_API_PASSWORD="MyComplexPassword"
+> MOVEON_REST_API_TOKEN="MyComplexApiTokenSetInTheBackofficeForThisUser"
 
 ## Usage
 

@@ -13,6 +13,7 @@ final class ApiTokenProvider
         private string $authEndpoint,
         private string $username,
         private string $password,
+        private string $token,
         private int $expiresIn = 3600
     ) {}
 
@@ -25,6 +26,7 @@ final class ApiTokenProvider
         }
 
         $response = $this->moveonRestApiBaseClient->request('POST', $this->authEndpoint, [
+            'headers' => ['x-api-token'=>$this->token],
             'json' => ['username' => $this->username, 'password' => $this->password],
         ]);
 

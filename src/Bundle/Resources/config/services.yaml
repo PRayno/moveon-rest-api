@@ -25,3 +25,4 @@ services:
       $authEndpoint: "auth/token"
       $username: "%env(MOVEON_REST_API_USERNAME)%"
       $password: "%env(MOVEON_REST_API_PASSWORD)%"
+      $token: "%env(MOVEON_REST_API_TOKEN)%"

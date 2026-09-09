@@ -33,7 +33,6 @@ class MoveOnRestApi
             }
             else
             {
-                // On exécute une première query
                 $queryBuilder["limit"] = 1;
                 $response = $this->moveOnRestApiClient->request("GET",$query.http_build_query($queryBuilder))->toArray();
 
