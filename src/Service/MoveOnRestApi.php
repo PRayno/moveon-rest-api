@@ -46,18 +46,20 @@ class MoveOnRestApi
 
             $rows=$this->maxRowsPerQuery;
         }
-
+        
         $queryBuilder["limit"] = $rows;
 
         $content=[];
         for ($i=1;$i<=$totalPages;$i++)
         {
-            if ($i==$totalPages)
-                $queryBuilder["limit"] = $totalRows-$rows*($totalPages-1);
-
             $queryBuilder["page"] = $i;
             $response = $this->moveOnRestApiClient->request("GET",$query.http_build_query($queryBuilder))->toArray();
             $content = array_merge($content,$response["data"]);
+        }
+
+        if (count($content) > $totalRows)
+        {
+            $content = array_slice($content,0,$totalRows);
         }
 
         return $content;
