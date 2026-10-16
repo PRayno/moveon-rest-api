@@ -34,7 +34,7 @@ class MoveOnRestApiClient implements HttpClientInterface
         }
     }
 
-    public function stream($responses, float $timeout = null): ResponseStreamInterface
+    public function stream($responses, ?float $timeout = null): ResponseStreamInterface
     {
         return $this->moveonRestApiBaseClient->stream($responses, $timeout);
     }
